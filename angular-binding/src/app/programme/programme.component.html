@@ -1,0 +1,9 @@
+<p>
+  响应式编程demo
+</p>
+<!--<input type="text" (keyup)="onkey($event)">-->
+
+<!-- 下面的-->
+<input type="text" #myField (keyup)="onkey(myField.value)">
+
+<input type="text" [formControl]="searchInput" placeholder="响应式编程">

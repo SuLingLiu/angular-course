@@ -1,0 +1,22 @@
+<div>
+  <!--<app-red-border [content]="xxx"></app-red-border>-->
+</div>
+<!--<div>
+  <app-red-border>
+    <div class="inner">这是红框里的内容</div>
+    <ul>
+      <li *ngFor="let val of arr">{{val}}</li>
+    </ul>
+  </app-red-border>
+</div>-->
+
+<div>
+  <app-red-border>
+    <div class="red">这是红框里的内容</div>
+    <div class="green">这是绿框里的内容</div>
+  </app-red-border>
+
+  <a href="javascript:;" [routerLink]="['/']">child1</a>
+  <a href="javascript:;" [routerLink]="['/child2']">child2</a>
+  <router-outlet></router-outlet>
+</div>

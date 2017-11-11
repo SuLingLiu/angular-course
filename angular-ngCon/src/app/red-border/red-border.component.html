@@ -1,0 +1,11 @@
+<div style="border: 1px solid red;">
+  <!-- 考虑到要在这里面放的是不同的内容如 img p 标签等-->
+  <!-- 方案一：可以用路由   router-outlet标签，这样会非常麻烦-->
+  <!-- 方案二：用属性绑定-->
+  <!--<div [innerHTML]="content"></div> -->
+  <!-- 方案三：ng-content 常见的如：轮播图，下拉列表上拉加载，下拉刷新,显示不同的内容，可以用一个标识，如下-->
+  <ng-content select=".red"></ng-content>
+</div>
+<div style="border: 1px solid green;">
+  <ng-content select=".green"></ng-content>
+</div>
