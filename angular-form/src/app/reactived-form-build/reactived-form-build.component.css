@@ -1,0 +1,8 @@
+/* 自带一些class */
+/*.ng-invalid {
+  border: 1px solid red;
+}*/
+
+.inputHasError {
+  border: 1px solid red;
+}

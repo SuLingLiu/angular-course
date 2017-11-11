@@ -1,0 +1,8 @@
+<div>
+  异步管道调用http
+</div>
+
+<ul>
+  <li *ngFor="let stock of stocks | async">{{stock.name}}</li>
+</ul>
+<!-- async 接受流信息，自动订阅-->

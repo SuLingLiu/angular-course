@@ -1,0 +1,37 @@
+
+<form [formGroup]="formModel" (ngSubmit)="createUser()">
+  <div>
+    用户名：<input formControlName="nickname" [class.inputHasError]="formModel.get('nickname').invalid" type="text">
+    <div [hidden]="!formModel.hasError('required', 'nickname')">用户名是必填项</div>
+    <div [hidden]="!formModel.hasError('minlength', 'nickname')">用户名的最少长度</div>
+  </div>
+  <div>邮箱：
+    <ul formArrayName="emails">
+      <li *ngFor="let email of formModel.get('emails').controls; let i = index;">
+        <input [formControlName]="i" type="email">
+      </li>
+    </ul>
+    <button type="button" (click)="addEmail()">增加Email</button>
+  </div>
+  <div>
+    手机号：<input formControlName="mobile" type="number">
+    <div [hidden]="formModel.get('mobile').valid || formModel.get('mobile').pristine">
+      <div [hidden]="!formModel.hasError('mobile', 'mobile')">手机号不合法</div>
+    </div>
+
+    <div [hidden]="!formModel.get('mobile').pending">正在校验手机号合法性</div>
+  </div>
+  <div formGroupName="passwordInfo">
+    <div>密码：<input formControlName="password" type="password"></div>
+    <div [hidden]="formModel.get('passwordInfo.password').valid || formModel.get('passwordInfo.password').untouched">
+      <div [hidden]="!formModel.hasError('required', 'passwordInfo.password')">密码是必填项</div>
+    </div>
+
+    <div>确认密码：<input formControlName="passwordConfirm" type="password"></div>
+    <div [hidden]="!formModel.hasError('password', 'passwordInfo')">{{formModel.getError('password', 'passwordInfo')?.description}}</div>
+  </div>
+  <button type="submit">注册</button>
+</form>
+<div>
+  {{formModel.status}}
+</div>

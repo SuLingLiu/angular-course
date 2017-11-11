@@ -1,0 +1,13 @@
+<div>我是父组件</div>
+
+<div>
+  <input type="text" placeholder="请输入搜索关键字" [(ngModel)]="search">
+
+</div>
+<!--<app-stock-search [keyWord]="search" (searchResult)="searchResultHandler($event)"></app-stock-search>-->
+
+<app-stock-search [keyWord]="search" (addCard)="addCardHandler($event)"></app-stock-search>
+
+<!--<app-stock-cart [keyWord]="search"></app-stock-cart>-->
+<!---->
+<app-stock-cart  [stockInfo]="stockInfo"></app-stock-cart>

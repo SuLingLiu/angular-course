@@ -1,0 +1,50 @@
+<!--<form #myForm="ngForm" action="/createUser" method="post" (ngSubmit)="createUser(myForm.value)">
+  <div>用户名：<input #myNickName="ngModel" ngModel name="nickname" type="text" required pattern="[a-z0-9A-Z]"></div>
+  <div>手机号：<input type="text"></div>
+  <div>邮编：<input type="number" min="100000" max="999999"></div>
+  <div ngModelGroup="passwordInfo">
+    <div>密码：<input type="password" ngModel name="password"></div>
+    <div>确认密码：<input type="password"></div>
+  </div>
+  <button type="submit">注册</button>
+</form>
+<div>
+  {{myForm.value | json}}
+</div>
+<div>
+  昵称的值是：{{myNickName.value}}
+</div>-->
+<!--
+  模板式表单会自动在form添加ngForm，接管表单处理，对于有ngModel指令的会添加到表单数据模型中,会阻止表单的自动提交，angular提供了一个ngSubmit事件，写在from上,ngModel不需要写成[(ngModel)],也不需要定义属性，只需要name属性即可
+  ngForm可以写在div跟写在form是一样的
+  如果不想让angular接管表单，可以在form表单上写一个ngNoForm
+-->
+
+<!--
+  ngForm指令可以被一个模板本地变量引用，以便在模板中访问ngForm的实例
+  如： #myForm="ngForm"可以通过myForm来访问ngForm属性,myForm.value存的是所有的数据
+-->
+
+<form #myForm="ngForm" (ngSubmit)="createUser(myForm.value, myForm.valid)" novalidate>
+  <div>
+    用户名：<input ngModel required minlength="6" name="nickname" type="text">
+    <div [hidden]="!myForm.form.hasError('required', 'nickname')">用户名是必填项</div>
+    <div [hidden]="!myForm.form.hasError('minlength', 'nickname')">用户名的最少长度</div>
+  </div>
+  <div>
+    手机号：<input ngModel mobile name="mobile" type="number" (input)="onMobileInput(myForm)">
+    <div [hidden]="mobileValid || mobilePristine">
+      <div [hidden]="!myForm.form.hasError('mobile', 'mobile')">手机号不合法</div>
+    </div>
+  </div>
+  <div ngModelGroup="passwordInfo" password>
+    <div>密码：<input required type="password" ngModel name="password"></div>
+    <div [hidden]="!myForm.form.hasError('required', 'passwordInfo.password')">密码是必填项</div>
+    <div>确认密码：<input ngModel name="passwordConfirm" type="password"></div>
+
+    <div [hidden]="!myForm.form.hasError('password', 'passwordInfo')">{{myForm.form.getError('password', 'passwordInfo')?.description}}</div>
+  </div>
+  <button type="submit">注册</button>
+</form>
+
+<!-- novalidate 是让angular指定的校验器去做校验,不用浏览器默认的属性去做校验-->

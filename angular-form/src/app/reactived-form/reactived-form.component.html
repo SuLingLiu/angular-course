@@ -1,0 +1,18 @@
+
+<form [formGroup]="formModel" (ngSubmit)="createUser()">
+  <div>用户名：<input formControlName="nickname" type="text"></div>
+  <div>邮箱：
+    <ul formArrayName="emails">
+      <li *ngFor="let email of formModel.get('emails').controls; let i = index;">
+        <input [formControlName]="i" type="email">
+      </li>
+    </ul>
+    <button type="button" (click)="addEmail()">增加Email</button>
+  </div>
+  <div>手机号：<input formControlName="mobile" type="number"></div>
+  <div formGroupName="passwordInfo">
+    <div>密码：<input formControlName="password" type="password"></div>
+    <div>确认密码：<input formControlName="passwordConfirm" type="password"></div>
+  </div>
+  <button type="submit">注册</button>
+</form>
