@@ -26,7 +26,7 @@ angular必须有一个模块和一个组件。
 - 模板：Template
 - 控制器：Controller,包括组件的属性和方法，绝大多数的逻辑是写在这里
 ## 搭建Angular开发环境
-- 只能用npm来装npm install -g，@angular/cli，不然使用的时候会有问题
+- 只能用npm来装npm install -g @angular/cli，不然使用的时候会有问题
 - ng new taskmgr --skip-install  （ng new taskmgr -si --style=scss）
 - ng g component header(ng g c header),生成一个组件，ng g component stock/stockManage，子组件，模块的根元素不局限于一个
 - ng new router --routing
