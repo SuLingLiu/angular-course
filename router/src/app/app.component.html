@@ -1,0 +1,12 @@
+<a [routerLink]="['/home']">主页</a>
+<!-- <a [routerLink]="['/stock']" [queryParams]="{id: 1}">股票详情</a> -->
+<a [routerLink]="['/stock', 1]">股票详情</a>
+<input type="button" value="股票详情" (click)="toStockDetail()">
+<!-- primary 只要我点了开始咨询，不管主路由在那，都需要跳会home  -->
+<!-- <a [routerLink]="[{outlets: {primary: 'home', aux: 'consult'}}]">开始咨询</a> -->
+<a [routerLink]="[{outlets: {aux: 'consult'}}]">开始咨询</a>
+<a [routerLink]="[{outlets: {aux: null}}]">结束咨询</a>
+<!-- 组件的内容展示在下面的标签里 -->
+<router-outlet></router-outlet>
+<!-- 辅助插件位置 需要加一个name属性 -->
+<router-outlet name="aux"></router-outlet>
