@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroesComponent } from '../heroes/heroes.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { RxjsComponent } from '../rxjs/rxjs.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: HeroDetailComponent
+  },
+  {
+    path: 'rxjs',
+    component: RxjsComponent
   }
 ]
 

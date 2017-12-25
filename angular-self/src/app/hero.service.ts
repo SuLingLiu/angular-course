@@ -2,11 +2,17 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Hero } from './hero';
 
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toPromise';     //用于扩展Observable ,  把Observable直接转换成Promise对象
 // import { HEROES } from './mock-heroes';
 
 
-
+/*
+查询所有成员：以GET方法访问api/persons
+查询某个成员：以GET方法访问api/persons/id，比如id是1，那么访问api/persons/1
+更新某个成员：以PUT方法访问api/persons/id
+删除某个成员：以DELETE方法访问api/persons/id
+增加一个成员：以POST方法访问api/persons
+*/
 
 @Injectable()
 export class HeroService {
@@ -18,8 +24,8 @@ export class HeroService {
     getHeroes(): Promise<Hero[]> {
         //return Promise.resolve(HEROES);
 
-        return this.http.get(this.heroesUrl)
-            .toPromise()
+        return this.http.get(this.heroesUrl)   //http.get返回一个 RxJS 的Observable对象
+            .toPromise()        //操作符把Observable直接转换成Promise对象
             //.then(response => response.json().data as Hero[])
             .then(response => response.json())
             .catch(this.handleError);
