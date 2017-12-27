@@ -119,8 +119,11 @@ Chrome配置：安装Augury创建
 ## 框架
 ![image](./markdow-img/iframe.png)
 
-
+## 组件
 ![image](./markdow-img/component.png)
+
+![image](./markdow-img/component2.png)
+
 ## 错误
 
 - 需要引入http：HeaderComponent.html:5 ERROR Error: Could not find Http provider for use with Angular Material icons. Please include the HttpModule from @angular/http in your app imports.
