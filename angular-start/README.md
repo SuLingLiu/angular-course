@@ -116,6 +116,8 @@ Chrome配置：安装Augury创建
 }
 ```
 
+## 框架
+![image](./markdow-img/iframe.png)
 
 ## 错误
 
@@ -124,4 +126,6 @@ Chrome配置：安装Augury创建
 ## 问题
 
 1. 如何实现有webpack的功能，代码分割，按需加载。
+2. 服务端渲染
+3. 单页SEO优化
 
