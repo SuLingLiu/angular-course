@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [     //只能声明组件，管道，指令
     AppComponent
   ],
-  imports: [
+  imports: [     //引用其它模块
     BrowserModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [],   //声明服务
+  bootstrap: [AppComponent]  //声明模块的主组件
 })
 export class AppModule { }
