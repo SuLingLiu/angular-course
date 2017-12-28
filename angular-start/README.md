@@ -41,8 +41,12 @@ Chrome配置：安装Augury创建
 ## angular-组件库
 
 - Material: https://material.io/components/
-	安装带版本的：cnpm i --save @angular/material@2.0.0-beta.7
-	图标：https://material.io/icons/
+  安装带版本的：cnpm i --save @angular/material@2.0.0-beta.7
+  图标：https://material.io/icons/
+
+- AdminLTE：https://github.com/almasaeed2010/AdminLTE，基于bootstrap3的后台管理模板
+
+    npm install admin-lte --save
 
 ## angular.json
 
@@ -121,8 +125,13 @@ Chrome配置：安装Augury创建
 
 ## 组件
 ![image](./markdow-img/component.png)
-
 ![image](./markdow-img/component2.png)
+
+
+## 字符格式
+- public attr: string
+- public attr: boolean[]
+- private stocks: Array<Stock>
 
 ## 错误
 
