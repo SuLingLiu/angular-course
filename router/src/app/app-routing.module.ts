@@ -10,6 +10,12 @@ import { PermissionGuard } from './guard/permission.guard';
 import { FocusGuard } from './guard/focus.guard';
 import { StockResolve } from './guard/stock.resolve';
 
+/**
+ * 注意：
+ *      path属性不要用/开头，angular做了处理
+ *
+ * */
+
 const routes: Routes = [
 	//{path: 'xx', redirectTo: '/home', pathMatch: 'prefix'},//表示只要是xx开头的都会跳到home
 	{path: '', redirectTo: '/home', pathMatch: 'full'},//表示full表示只有精准的是空字符串才会跳到home

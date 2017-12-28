@@ -24,6 +24,7 @@ Chrome配置：安装Augury创建
 - ng new taskmgr -si --style=scss
 - 创建模块：ng g m core
 - 创建组件：ng g c core/header --spec=false
+- ng new router --routing,会自动生成一个app-routing.module.ts并对其进行导入和基础配置
 - 访问路径：http://localhost:4200/
 
 ## Mock Rest API
