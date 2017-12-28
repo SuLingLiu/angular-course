@@ -14,6 +14,9 @@ import { StockResolve } from './guard/stock.resolve';
  * 注意：
  *      path属性不要用/开头，angular做了处理
  *
+ *
+ *      配置一个通配路由**，以容错不存在的页面，匹配所有页面，但是放到最后面，如果前面有，就不会往后走
+ *
  * */
 
 const routes: Routes = [
@@ -32,7 +35,7 @@ const routes: Routes = [
 			stock: StockResolve
 		}
 	},
-	{path: '**', component: Code404Component}//匹配所有页面，但是放到最后面，如果前面有，就不会往后走
+	{path: '**', component: Code404Component}
 ];
 
 @NgModule({

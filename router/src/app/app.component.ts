@@ -13,6 +13,7 @@ export class AppComponent {
   }
 
   toStockDetail() {
+    //Router 导航到一个指定的路由
   	this.router.navigate(['/stock',2]);
   }
 }
