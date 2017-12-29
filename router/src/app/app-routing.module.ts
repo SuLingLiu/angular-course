@@ -42,6 +42,8 @@ const routes: Routes = [
 		],
 		//canActivate: [PermissionGuard],//路由守卫，接受的是一个数组，数组里的值是布尔值，可以是多个，一级一级守卫，如果有一个返回false,就进不去这个守卫，PermissionGuard是一个类，之所以不用new是因为在app.module.ts里的providers里加入，angular会去实例化
 		// canDeactivate: [FocusGuard],
+
+    // resolve的含义是在进入这个路由的时候会携带数据过去，数据是从StockResolve中获取
 		resolve: {
 			stock: StockResolve
 		}

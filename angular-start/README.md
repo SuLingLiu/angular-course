@@ -35,6 +35,9 @@ Chrome配置：安装Augury创建
 - https://www.getpostman.com/，下载postman安装，填了数据后会自动更新访问的json文件
 - 还可以用VSCode的REST Client插件
 
+## ajax未请求数据过来时，页面模板定义的数据会报错解决方法：
+1. 路由守卫：Resolve时获取数据
+
 ## 安装过程中遇到问题
 
 先uninstall，再清缓存npm cache verify，再安装

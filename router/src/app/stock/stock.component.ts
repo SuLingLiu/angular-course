@@ -32,7 +32,7 @@ export class StockComponent implements OnInit {
     //3.在路由配置里去配一个参数如：{path: 'stock/:id', component: StockComponent, data: [{isPro: true}]}
     this.isPro = this.routeInfo.snapshot.data[0]["isPro"];
 
-
+    //路由守卫里Resolve携带的数据
     this.routeInfo.data.subscribe((data: {stock: Stock}) => {
       this.stock = data.stock;
     })

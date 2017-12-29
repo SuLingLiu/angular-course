@@ -10,6 +10,8 @@ export class StockResolve implements Resolve<Stock> {
 	constructor(private router: Router) {
 	}
 	resolve(router: ActivatedRouteSnapshot) {
+
+	  //this.routeInfo.snapshot,snapshot它继承的类是ActivatedRouteSnapshot，所以这里直接用就行
 		let id = router.params['id'];
 		if (id == 1) {
 			return new Stock(1, 'IBM');
