@@ -11,11 +11,17 @@ import { FocusGuard } from './guard/focus.guard';
 import { StockResolve } from './guard/stock.resolve';
 
 /**
- * 注意：
- *      path属性不要用/开头，angular做了处理
+ * 1.path属性不要用/开头，angular做了处理
+ * 2.重定向redirectTo，带/
+ *      pathMatch有两个值  full、prefix
+ *      full表示只有精准的path路径才会跳到重定向的路由
+ *      prefix表示只要是path路径开头的都会跳到重定向的路由
+ *
+ * 2.子路由，在根路由里增加children属性，如下，当访问stock/1时显得的是BuyerListComponent，访问stock/1/seller/100显示的是 SellerListComponent组件
+ *    <a [routerLink]="['./']">买家列表</a> 主路由是/，子路由需要用./表示是从当前路由下去找
  *
  *
- *      配置一个通配路由**，以容错不存在的页面，匹配所有页面，但是放到最后面，如果前面有，就不会往后走
+ * 配置一个通配路由**，以容错不存在的页面，匹配所有页面，但是放到最后面，如果前面有，就不会往后走
  *
  * */
 

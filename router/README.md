@@ -15,5 +15,10 @@
 ## 路由参数
 ![image](./img/router-para.png)
 
+## 辅助路由
+用于类似侧导航的咨询等相关位置功能，很多页面都有
+![image](./img/router-aux1.png)
+![image](./img/router-aux2.png)
+
 ## 路由守卫
 ![image](./img/router-can.png)
