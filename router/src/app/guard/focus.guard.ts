@@ -2,6 +2,7 @@
 import { CanDeactivate } from "@angular/router";
 import { StockComponent } from '../stock/stock.component';
 
+//CanDeactivate能拿到当前守卫的组件，拿到组件的信息来做一些判断
 export class FocusGuard implements CanDeactivate<StockComponent> {
 	canDeactivate(component: StockComponent) {
 		if(component.isFocus()) {
