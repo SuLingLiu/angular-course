@@ -27,3 +27,39 @@
 在一个组件里如：private stock: Stock;//如果这只是ajax请求过来的数据，一开始没值，会报错，所以用路由守卫里的Resolve来提交获取数据
 
 ![image](./img/router-can.png)
+
+## 路由事件
+在别的组件里要判断当前路由所相关的事情，可以用路由事件，具体可参数angular-auction
+
+```
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter';
+
+@Component({
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.css']
+})
+export class ContentComponent implements OnInit {
+  pageTitle: string = '';
+  pageDesc: string = '';
+
+  constructor(public router: Router) {
+    router.events
+      .filter(event => event instanceof NavigationEnd)//选择路由结束事件
+      .subscribe((event: NavigationEnd) => {
+          if(event.url == '/dashboard') {
+            this.pageTitle = '这是首页';
+            this.pageDesc = '';
+          }else {
+            this.pageTitle = '股票信息管理';
+            this.pageDesc = '进行股票信息基本增删改查';
+          }
+      })
+  }
+  ngOnInit() {}
+}
+
+```
+
