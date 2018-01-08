@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +14,8 @@ import { StockManageComponent } from './stock/stock-manage/stock-manage.componen
 import { StarsComponent } from './stars/stars.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StockFormComponent } from './stock/stock-form/stock-form.component';
+
+import {StockService} from "./stock/stock.service";
 
 
 const routeConfig: Routes = [
@@ -37,9 +40,10 @@ const routeConfig: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(routeConfig)
   ],
-  providers: [],
+  providers: [StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

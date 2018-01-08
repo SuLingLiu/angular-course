@@ -137,6 +137,9 @@ Chrome配置：安装Augury创建
 - public attr: boolean[]
 - private stocks: Array<Stock>
 
+## 常忘点
+- <app-stars [rating]="stock?.rating"></app-stars> 变量后的?用于容错
+
 ## 错误
 
 - 需要引入http：HeaderComponent.html:5 ERROR Error: Could not find Http provider for use with Angular Material icons. Please include the HttpModule from @angular/http in your app imports.
