@@ -9,7 +9,7 @@ export class AnotherStockService {
 
 }*/
 
-//因为要实现同一个tocken的注入所以要写成如下,也要有StockService,StockService如果注入了其他服务，因为是同一个tocken，所以这里也需要注入LoggerService,否则会报错
+//因为要实现同一个tocken的注入所以要写成如下,也要有StockService,并把方法和属性也copy过来，StockService如果注入了其他服务，因为是同一个tocken，所以这里也需要注入LoggerService,否则会报错
 @Injectable()
 export class AnotherStockService implements StockService{
   getStock(): Stock {
@@ -17,5 +17,4 @@ export class AnotherStockService implements StockService{
   }
 
   constructor(public logger: LoggerService) { }
-
 }
