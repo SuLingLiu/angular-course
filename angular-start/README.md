@@ -125,12 +125,11 @@ Chrome配置：安装Augury创建
 ```
 
 ## 框架
-![image](./markdow-img/iframe.png)
+![image](./img/iframe.png)
 
 ## 组件
-![image](./markdow-img/component.png)
-![image](./markdow-img/component2.png)
-
+![image](./img/component.png)
+![image](./img/component2.png)
 
 ## 字符格式
 - public attr: string
