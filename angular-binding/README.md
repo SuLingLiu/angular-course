@@ -72,7 +72,7 @@ getStockInfo(value:string) {
 ```
 //模板
 1.管道于值以|隔开，可以传递多个管道，以|隔开
-2.管道还可以传递参数，以:隔开
+2.管道还可以传递参数，以:隔开,多个参数也以冒号隔开<tr *ngFor="let stock of stocks | stockFilter : 'name' : keyword;let i = index;">
 3.angular有内置管道，也可以自定义广告
 
 //angular内置了10几个管道
