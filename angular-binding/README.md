@@ -37,3 +37,80 @@ doOnInput(event: any) {
 3.  <div [ngClass]="{aa: isA, bb: isB}">Something</div>
 - 样式绑定
 1.  <button [style.color]="isSpecial ? 'red' : 'green'">Red</button>
+
+## 响应式编程
+
+```
+//首先在模块里要引入import { ReactiveFormsModule } from '@angular/forms';响应式编程模块
+//在组件里要引入
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import 'rxjs/Rx';
+
+//类里面
+//FormControl每个表单都会有这个
+searchInput:FormControl = new FormControl();
+
+constructor() {
+
+    this.searchInput.valueChanges//valueChange是一个流，值发生改变就会调用这个事件
+      .debounceTime(500) //debounceTime需要引用rxjs/Rx 每隔500毫秒提交一次
+      .subscribe(stockCode => this.getStockInfo(stockCode));
+}
+
+
+getStockInfo(value:string) {
+    console.log(value);
+}
+
+//模板里
+<input type="text" [formControl]="searchInput" placeholder="响应式编程">
+
+```
+## 管道
+
+```
+//模板
+1.管道于值以|隔开，可以传递多个管道，以|隔开
+2.管道还可以传递参数，以:隔开
+3.angular有内置管道，也可以自定义广告
+
+//angular内置了10几个管道
+/*
+*  创建管道的命令：ng g pipe pipe/multiple
+*  date可以接受参数   时钟的HH代表24小时制，hh代表12小时制
+*  uppercase
+*  lowercase
+*  number number:'2.2-2' 参数第一个2表示整数，第二个2表示最少的小数表示几位，第三个2表示最多的整数表示几位
+*  async 处理流
+* */
+
+注：
+    1.number:'2.2-2' 2.2-2小数点的2表示整数位数，2-2前面的2表示最小多少位，后面的表示最大多少位
+
+<p>我的生日是{{birthday | date:'yyyy-MM-dd HH:mm:ss' | uppercase}}</p>
+<p>圆周率是{{Pi | number:'2.2-2'}}</p>
+<p>自定义管道 {{size | multiple: 2}}</p>
+
+//模块，管道需要声明在模块的declarations里
+
+//管道
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'multiple' //管道名字
+})
+export class MultiplePipe implements PipeTransform {
+  //参数一：输入值，原始值，参数二：参数
+  transform(value: number, args?: any): any {
+    if(!args) {
+      args = 1;
+    }
+    return value * args;
+  }
+
+}
+
+
+
+```

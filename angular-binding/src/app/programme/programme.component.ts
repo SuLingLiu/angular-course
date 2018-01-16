@@ -22,6 +22,7 @@ export class ProgrammeComponent implements OnInit {
         () => console.log('结束了')
       )*/
 
+    //valueChange是一个流，值发生改变就会调用这个事件
     this.searchInput.valueChanges
       .debounceTime(500) //debounceTime需要引用rxjs/Rx 每隔500毫秒提交一次
       .subscribe(stockCode => this.getStockInfo(stockCode));

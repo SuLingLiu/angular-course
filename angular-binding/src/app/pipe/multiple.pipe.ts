@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'multiple'
+  name: 'multiple' //管道名字
 })
 export class MultiplePipe implements PipeTransform {
   //参数一：输入值，原始值，参数二：参数
