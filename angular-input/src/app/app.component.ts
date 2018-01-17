@@ -11,9 +11,9 @@ export class AppComponent {
   private currentPrice: number;
   private stockInfo:StockInfo;
 
-  searchResultHandler(stockInfo: StockInfo) {
+/*  searchResultHandler(stockInfo: StockInfo) {
     this.currentPrice = stockInfo.price;
-  }
+  }*/
 
   addCardHandler(stockInfo: StockInfo) {
     this.stockInfo = stockInfo;

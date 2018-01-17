@@ -12,6 +12,7 @@ export class StockCartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.stockInfo = new StockInfo('',0);//需要赋初始值不然会报错
   }
 
 }
