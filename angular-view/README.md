@@ -1,27 +1,23 @@
-# AngularView
+# 父组件如何获取子组件的方法和属性，以及ngAfterViewInit，ngAfterViewChecked生命周期
+## 父组件获取子组件的属性和方法
+1. 通过在调用子组件上加#child2 这样child2相当于子组件变量
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+```
+<app-child #child2></app-child>
+<button (click)="child2.greeting('Jerry')">调用child2的greeting方法</button>
+```
 
-## Development server
+2. 父组件里通过装饰器@ViewChild
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+ @ViewChild('child1')
+  child1: ChildComponent;
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  ngOnInit(): void {
+    setInterval(() => {
+      this.child1.greeting(('Tom'));
+    }, 5000)
+  }
+```
+## ngAfterViewInit，ngAfterViewChecked生命周期
+具体可以参考里面的demo
