@@ -1,27 +1,73 @@
-# AngularLifecycle
+# 生命周期
+![image](./img/life1.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+## 生命周期调用顺序
+![image](./img/life2.png)
 
-## Development server
+```
+import {
+  AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges,
+  OnDestroy,
+  OnInit, SimpleChanges
+} from '@angular/core';
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+let logIndex:number = 1;
 
-## Code scaffolding
+@Component({
+  selector: 'app-lift',
+  templateUrl: './lift.component.html',
+  styleUrls: ['./lift.component.css']
+})
+export class LiftComponent implements OnInit, OnChanges, DoCheck, AfterViewChecked, AfterContentChecked, AfterViewInit, AfterContentInit, OnDestroy {
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  @Input()
+  name: string = 'Tom';
+  logIte(msg: string) {
+    console.log(`#${logIndex++} ${msg}`);
+  }
 
-## Build
+  //输入属性在这个方法里是没有被赋值的，如果要用到这个可以在ngOnInit里用
+  constructor() {
+    this.logIte('name属性在constructor里的值是：'+name);
+  }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+  //当一个父组件初始化一个或者改变一个子组件的输入属性的时候被调用，如果这个组件没有输入属性，则这个方法永远不会被调用，它的首次调用一定发生在ngOnInit之前
+  ngOnChanges(changes: SimpleChanges): void {
+    let name = changes['name'].currentValue;
+    this.logIte('name属性在ngOnChanges里的值是：'+name);
+  }
 
-## Running unit tests
+  ngOnInit() {
+    this.logIte('ngOnInit');
+  }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  //用来检测的，在angular每个变更周期中调用的
+  ngDoCheck(): void {
+    this.logIte('ngDoCheck');
+  }
 
-## Running end-to-end tests
+  //下面两个是跟内容投影相关
+  ngAfterContentInit(): void {
+    this.logIte('ngAfterContentInit');
+  }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  ngAfterContentChecked(): void {
+    this.logIte('ngAfterContentChecked');
+  }
 
-## Further help
+  //下面跟模板和检查相关
+  ngAfterViewInit(): void {
+    this.logIte('ngAfterViewInit');
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  ngAfterViewChecked(): void {
+    this.logIte('ngAfterViewChecked');
+  }
+
+  ngOnDestroy(): void {
+    this.logIte('ngOnDestroy');
+  }
+
+}
+
+```
