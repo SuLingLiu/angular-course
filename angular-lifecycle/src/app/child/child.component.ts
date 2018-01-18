@@ -23,12 +23,13 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
   ngOnInit() {
   }
 
-  //初始化输入属性会调用一次，如果父组件的不可变量如字符串发生了变化，也会调用，如果是父组件的对象可变量发生变化是不会触发ngOnChanges,还有子组件的不可变量发生变化也是不会触发的
+  //可变对象，不可变对象。不可变对象是在内存中被创建后，他的值永远不可改变，如字符串，当字符变量被赋值时，只是变量从一个内存地址指向了另一个内存地址。对象是可变对象
+  //初始化时不管是可变或不可变的输入属性都会调用ngOnChanges,但是当父组件的可变对象里的值发生变化时，是不会再触发此函数，不可变对象是可以触发的，但是子组件的值是发生了变化是因为变更检测机制的原因
   ngOnChanges(changes: SimpleChanges): void {
     console.log(JSON.stringify(changes,null,2))
   }
 
-  //触发事件也会调用，所以如果要对某一个元素做处理，最好判断一下，
+  //触发事件也会调用，会被很多触发调用，所以如果要对某一个元素做处理，最好判断一下，
   ngDoCheck(): void {
       if(this.stock.name !== this.oldStockName) {
         this.changeDetected = true;
@@ -45,6 +46,5 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
 
       this.changeDetected = false;
   }
-
 
 }
