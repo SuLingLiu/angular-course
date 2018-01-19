@@ -23,7 +23,7 @@ export class StockFormComponent implements OnInit {
   }
 
   save() {
-    alert(7)
+    this.router.navigateByUrl('/stock');
   }
 
 }

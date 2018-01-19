@@ -149,3 +149,18 @@ export class StockCartComponent implements OnInit {
 }
 
 ```
+## 自定义双向数据绑定
+
+```
+//父组件模调用
+<app-stars [(rating)]="stock.rating" [readonly]="false"></app-stars>
+
+//子组件模板
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+@Input()
+rating: number = 0;
+
+//ratingChange 输入属性写rating，输出写ratingChange就能组成自定义的双向数据绑定
+@Output()
+ratingChange: EventEmitter<number> = new EventEmitter();
+```
