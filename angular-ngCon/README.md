@@ -1,27 +1,30 @@
-# AngularNgCon
+## ng-content指令(投影)相当于vue的slot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+```
+//子组件模板
+<div style="border: 1px solid red;">
+  <!-- 考虑到要在这里面放的是不同的内容如 img p 标签等-->
+  <!-- 方案一：可以用路由   router-outlet标签，这样会非常麻烦-->
+  <!-- 方案二：用属性绑定-->
+  <!--<div [innerHTML]="content"></div> -->
+  <!-- 方案三：ng-content 常见的如：轮播图，下拉列表上拉加载，下拉刷新,显示不同的内容，可以用一个标识，select的值是对应调用组件时的class如下-->
+  <ng-content select=".red"></ng-content>
+</div>
+<div style="border: 1px solid green;">
+  <ng-content select=".green"></ng-content>
+</div>
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+//父组件模板 组件里元素的class不用给它写样式，他是对应子组件里的select属性
+ <app-red-border>
+    <div class="red">这是红框里的内容</div>
+    <div class="green">这是绿框里的内容</div>
+  </app-red-border>
 
-## Code scaffolding
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ngAfterContentInit、ngAfterContentChecked组件投影内容初始化完毕，组件投影内容变更检测完毕
+在这里修改被绑定的属性值是不会报错的，具体看demo
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## OnDestroy
+一般会在这个阶段清除一些引用的资源如：反定义一个流，清除定时器
