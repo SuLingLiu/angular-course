@@ -8,7 +8,7 @@ import {FormArray, FormControl, FormGroup} from "@angular/forms";
 })
 export class ReactivedFormComponent implements OnInit {
 
-  private formModel: FormGroup;
+  private formModel: FormGroup;//包含一组值，里面可以包含FormControl和FormArray，每一个input都用一个FormControl来控制，FromArray表示的是数组
 
   constructor() {
     this.formModel = new FormGroup({

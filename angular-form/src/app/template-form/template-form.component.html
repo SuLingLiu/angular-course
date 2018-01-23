@@ -26,6 +26,7 @@
 -->
 
 <form #myForm="ngForm" (ngSubmit)="createUser(myForm.value, myForm.valid)" novalidate>
+<!--<form #myForm="ngForm" (ngSubmit)="createUser(myForm.value, myForm.valid)">-->
   <div>
     用户名：<input ngModel required minlength="6" name="nickname" type="text">
     <div [hidden]="!myForm.form.hasError('required', 'nickname')">用户名是必填项</div>
@@ -47,4 +48,4 @@
   <button type="submit">注册</button>
 </form>
 
-<!-- novalidate 是让angular指定的校验器去做校验,不用浏览器默认的属性去做校验-->
+<!-- novalidate 是让angular指定的校验器去做校验,不用浏览器默认的属性去做校验， 模板式表单的校验需要用指令来完成 -->

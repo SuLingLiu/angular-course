@@ -42,8 +42,8 @@ export class ReactivedFormBuildComponent implements OnInit {
   constructor() {
     //Validators是内置校验器，多个可以用数组表示
     this.formModel = this.fb.group({
-      nickname: ['3434356', [Validators.required, Validators.minLength(6)]],  //数组的第一个值表示初始值，第二个表示校验方法，第三个表示异步方法，
-      mobile: ['', mobileValidator, mobileAsyncValidator],    //先校验第二个参数，完了以后才会校验异步远程校验
+      nickname: ['1234', [Validators.required, Validators.minLength(6)]],  //数组的第一个值表示初始值，第二个表示校验方法，第三个表示异步方法，
+      mobile: ['', mobileValidator, mobileAsyncValidator],    //先校验第二个参数，完了以后才会校验异步远程校验，可以用来校验手机的合法性，验证图片等
       emails: this.fb.array([
         ['']
       ]),

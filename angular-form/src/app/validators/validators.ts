@@ -14,7 +14,7 @@ export function mobileAsyncValidator(mobile: FormControl): any {
   let value = (mobile.value || '') + '';
   let myreg = /^1[3|4|5|8][0-9]\d{4,8}$/;
   let valid = myreg.test(value);
-  console.log('手机是否校验通过' + valid);
+  console.log('手机是否校验通过-------异步' + valid);
   // return valid ? null : {mobile: true};
   //这是为了模拟远程服务所以用了延迟5秒,5s后数据回来
   return Observable.of(valid ? null : {mobile: true}).delay(5000);
