@@ -8,6 +8,7 @@ import {WebSocketService} from "../shared/web-socket.service";
 })
 export class Stock2Component implements OnInit {
 
+  //angular并没有实现一个类似http的服务的类，来实现websoket的连接，所以需要自己写一个服务来产生流
   constructor(public wsService: WebSocketService) { }
 
   ngOnInit() {
